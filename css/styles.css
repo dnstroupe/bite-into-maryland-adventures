@@ -1,0 +1,195 @@
+/* Custom CSS Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Background colors using custom color palette */
+  .bg-chesapeake-blue { background-color: #1A3E5E; }
+  .bg-crab-shell-red { background-color: #D42E12; }
+  .bg-old-bay-gold { background-color: #F2B705; }
+  .bg-oyster-pearl-white { background-color: #F1F1E6; }
+  .bg-baltimore-brick { background-color: #9B4B3F; }
+  .bg-eastern-shore-green { background-color: #4A7C59; }
+  
+  /* Text colors */
+  .text-chesapeake-blue { color: #1A3E5E; }
+  .text-crab-shell-red { color: #D42E12; }
+  .text-old-bay-gold { color: #F2B705; }
+  .text-oyster-pearl-white { color: #F1F1E6; }
+  .text-baltimore-brick { color: #9B4B3F; }
+  .text-eastern-shore-green { color: #4A7C59; }
+  
+  /* Utility Classes */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Hero Section Styles */
+  #hero {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Button Styles */
+  button {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #F2B705;
+  }
+  
+  /* Map Styling */
+  #map {
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Hover Effects & Animations */
+  .tour {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .tour:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    background-color: #4A7C59; /* Change background to Eastern Shore Green */
+  }
+  
+  .tour img {
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .tour img:hover {
+    transform: scale(1.1); /* Zoom in image slightly */
+  }
+  
+  /* Tour title hover effect */
+  .tour h4 {
+    transition: color 0.3s ease;
+  }
+  
+  .tour:hover h4 {
+    color: #F2B705; /* Change title to Old Bay Gold */
+  }
+  
+  /* Interactive Timeline Styles */
+  .timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 0;
+    max-width: 800px;
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #F1F1E6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 20px;
+    left: -35px;
+    background-color: #D42E12; /* Crab Shell Red for the timeline bullet */
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #F2B705; /* Old Bay Gold circle around the bullet */
+  }
+  
+  .timeline-content h4 {
+    transition: color 0.3s ease;
+  }
+  
+  .timeline-item:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    background-color: #F2B705; /* Change to Old Bay Gold */
+  }
+  
+  .timeline-item:hover h4 {
+    color: #1A3E5E; /* Change title to Chesapeake Blue on hover */
+  }
+  
+  .timeline-item p {
+    color: #4A7C59; /* Eastern Shore Green for text */
+  }
+  
+  .timeline-item:hover p {
+    color: #1A3E5E; /* Change text color on hover */
+  }
+  
+  /* Scroll Reveal Effect */
+  .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .timeline-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Gamified Culinary Challenge Styles */
+  #quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #quiz-options button {
+    padding: 12px;
+    background-color: #1A3E5E; /* Chesapeake Blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #quiz-options button:hover {
+    background-color: #F2B705; /* Old Bay Gold */
+  }
+  
+  #quiz-result {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* AR.js Augmented Reality Styling */
+  a-scene {
+    width: 100%;
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background: #1A3E5E; /* Background color when AR is not available */
+  }
+  
+  /* Community Wall Styles */
+  #shared-photos img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  #journal-entries {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .journal-entry {
+    background-color: #F1F1E6;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

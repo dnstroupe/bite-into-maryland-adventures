@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover the best food tours in Maryland with Bite Into Maryland Adventures! Explore Baltimore, Annapolis, and beyond."
+    />
+    <title>Bite Into Maryland Adventures</title>
+    <!-- Import Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Leaflet CSS for Interactive Map -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <!-- AR.js for Augmented Reality -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/ar.js@2.2.0/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body class="bg-oyster-pearl-white font-sans">
+    <!-- Header Section -->
+    <header class="bg-chesapeake-blue text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Bite Into Maryland Adventures</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a href="#about" class="hover:text-old-bay-gold">About</a></li>
+            <li><a href="#tours" class="hover:text-old-bay-gold">Tours</a></li>
+            <li><a href="#quiz" class="hover:text-old-bay-gold">Quiz</a></li>
+            <li>
+              <a href="#community" class="hover:text-old-bay-gold"
+                >Bite Buddies</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-old-bay-gold">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="bg-cover bg-center h-screen"
+      style="background-image: url('images/hero.jpg')"
+    >
+      <div
+        class="bg-black bg-opacity-50 h-full flex justify-center items-center"
+      >
+        <div class="text-center text-white">
+          <h2 class="text-5xl font-bold">Explore the Flavors of Maryland</h2>
+          <p class="mt-4 text-xl">
+            From Baltimore to Annapolis, indulge in the best food tours Maryland
+            has to offer.
+          </p>
+          <a
+            href="#tours"
+            class="bg-crab-shell-red text-white py-2 px-4 mt-6 inline-block rounded-full"
+            >Book a Tour</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section with Interactive Timeline -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto text-center">
+        <h3 class="text-4xl font-bold text-chesapeake-blue">About Us</h3>
+        <p class="mt-4 text-lg">
+          Discover Maryland’s culinary history with our guided food tours. Learn
+          about iconic Maryland dishes such as crab cakes, oysters, and more.
+        </p>
+
+        <!-- Timeline -->
+        <div class="timeline mt-10">
+          <div class="timeline-item mb-8">
+            <div class="timeline-icon"></div>
+            <div class="timeline-content bg-gray-100 p-4 rounded-lg shadow-lg">
+              <h4 class="text-2xl font-bold">1600s: Early Colonial Cuisine</h4>
+              <p>
+                The early settlers brought English and European culinary
+                traditions, incorporating local ingredients like oysters and
+                corn.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item mb-8">
+            <div class="timeline-icon"></div>
+            <div class="timeline-content bg-gray-100 p-4 rounded-lg shadow-lg">
+              <h4 class="text-2xl font-bold">
+                1700s: Chesapeake Bay Influence
+              </h4>
+              <p>
+                Seafood, particularly crabs and oysters, became the staple of
+                Maryland cuisine.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item mb-8">
+            <div class="timeline-icon"></div>
+            <div class="timeline-content bg-gray-100 p-4 rounded-lg shadow-lg">
+              <h4 class="text-2xl font-bold">
+                1800s: Maryland’s Famous Crab Cakes
+              </h4>
+              <p>
+                Crab cakes emerged as a signature dish, drawing from local
+                ingredients and rich culinary traditions.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item mb-8">
+            <div class="timeline-icon"></div>
+            <div class="timeline-content bg-gray-100 p-4 rounded-lg shadow-lg">
+              <h4 class="text-2xl font-bold">
+                1900s: Baltimore’s Food Markets
+              </h4>
+              <p>
+                Markets like Lexington Market became famous for offering a wide
+                variety of fresh seafood and produce.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item mb-8">
+            <div class="timeline-icon"></div>
+            <div class="timeline-content bg-gray-100 p-4 rounded-lg shadow-lg">
+              <h4 class="text-2xl font-bold">
+                Present Day: A Blend of Tradition and Innovation
+              </h4>
+              <p>
+                Maryland’s food scene now boasts a mix of traditional and
+                contemporary flavors, from crab boils to gourmet cuisine.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section id="tours" class="py-16 bg-baltimore-brick text-white">
+      <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-center">Our Tours</h3>
+
+        <!-- Map Section -->
+        <div id="map" class="mt-8" style="height: 500px"></div>
+        <!-- Map container -->
+
+        <!-- Tour Cards with Images -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour1.jpg"
+              alt="Fells Point Waterfront"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Fells Point Flavor Frenzy</h4>
+            <p class="mt-2">
+              A bite-sized Baltimore bliss that takes you through the best spots
+              in Fells Point.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $85</p>
+            <a
+              href="fellspoint.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour2.jpg"
+              alt="Annapolis State House"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Annapolis Appetites</h4>
+            <p class="mt-2">
+              Explore Annapolis while sampling dishes from historic restaurants.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $90</p>
+            <a
+              href="annapolis.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour3.jpg"
+              alt="Steamed crabs close-up"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Crab Creek Crawl</h4>
+            <p class="mt-2">
+              Dive into the culinary history of Chesapeake Bay with this
+              crab-centric tour.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $83</p>
+            <a
+              href="crab-creek.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour4.jpg"
+              alt="Chesapeake Bay Shoreline"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Harbor Hush Puppy Hop</h4>
+            <p class="mt-2">
+              Battered bites by the bay, featuring crispy seafood delights.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $75</p>
+            <a
+              href="harbor-hop.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour5.jpg"
+              alt="Little Italy, Baltimore"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Little Italy Lunar Bites</h4>
+            <p class="mt-2">
+              One small step for ham, one giant leap for prosciutto-kind.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $92</p>
+            <a
+              href="little-italy.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+
+          <div class="tour bg-chesapeake-blue p-6 rounded-lg">
+            <img
+              src="images/tour6.jpg"
+              alt="Federal Hill Park"
+              class="rounded-lg mb-4"
+            />
+            <h4 class="text-2xl font-bold">Federal Hill Foodie Frontier</h4>
+            <p class="mt-2">
+              Biting off more than you can chew, in the best way.
+            </p>
+            <p class="text-xl font-semibold mt-2">From $88</p>
+            <a
+              href="federal-hill.html"
+              class="bg-crab-shell-red text-white py-2 px-4 rounded-full inline-block mt-4 hover:bg-red-700"
+              >See More Details</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gamified Culinary Challenge Section -->
+    <section id="quiz" class="py-16 bg-white">
+      <div class="container mx-auto text-center">
+        <h3 class="text-4xl font-bold text-chesapeake-blue">
+          Test Your Maryland Food Knowledge
+        </h3>
+        <p class="mt-4 text-lg">
+          Think you're a Maryland food expert? Take this quiz and find out!
+        </p>
+
+        <!-- Quiz Wrapper -->
+        <div
+          id="quiz-container"
+          class="mt-8 bg-oyster-pearl-white p-6 rounded-lg shadow-lg"
+        >
+          <div id="quiz-question" class="text-2xl font-bold mb-4"></div>
+
+          <!-- Quiz Options -->
+          <div
+            id="quiz-options"
+            class="grid grid-cols-1 md:grid-cols-2 gap-4"
+          ></div>
+
+          <!-- Quiz Progress and Score -->
+          <div
+            id="quiz-progress"
+            class="mt-6 text-lg text-eastern-shore-green"
+          ></div>
+        </div>
+
+        <!-- Quiz Result Message -->
+        <div
+          id="quiz-result"
+          class="hidden mt-8 p-6 bg-crab-shell-red text-white rounded-lg"
+        >
+          <h4 class="text-2xl font-bold">Quiz Complete!</h4>
+          <p id="result-message" class="mt-4"></p>
+          <button
+            id="restart-quiz"
+            class="bg-eastern-shore-green py-2 px-4 mt-4 rounded-full"
+          >
+            Restart Quiz
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AR.js Augmented Reality Food Discovery Section -->
+    <section id="ar" class="py-16 bg-white text-center">
+      <h3 class="text-4xl font-bold text-chesapeake-blue">
+        Discover Maryland Food in AR
+      </h3>
+      <p class="mt-4 text-lg">
+        Use augmented reality to learn more about Maryland's iconic dishes.
+        Point your phone at a marker to discover the rich history and
+        preparation of each dish.
+      </p>
+      <a-scene embedded arjs>
+        <a-marker preset="hiro">
+          <a-box position="0 0.5 0" material="color: red;"></a-box>
+        </a-marker>
+        <a-entity camera></a-entity>
+      </a-scene>
+    </section>
+
+    <!-- Community Section: Community Wall and Food Journal -->
+    <section id="community" class="py-16 bg-white">
+      <div class="container mx-auto text-center">
+        <h3 class="text-4xl font-bold text-chesapeake-blue">
+          Bite Buddies Community Wall
+        </h3>
+        <p class="mt-4 text-lg">
+          Share your Maryland food tour experiences with the Bite Buddies
+          community!
+        </p>
+
+        <!-- Preloaded Photos from Bite Buddies Section -->
+        <div
+          id="shared-photos"
+          class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          <div class="shared-photo">
+            <img
+              src="images/community1.jpg"
+              alt="Friends enjoying food"
+              class="w-full rounded-lg mb-4"
+            />
+            <p>We had an amazing time on the Fells Point Flavor Frenzy!</p>
+          </div>
+          <div class="shared-photo">
+            <img
+              src="images/community2.jpg"
+              alt="People exploring food markets"
+              class="w-full rounded-lg mb-4"
+            />
+            <p>
+              The Annapolis Appetites tour was unforgettable. Highly recommend!
+            </p>
+          </div>
+        </div>
+
+        <!-- Upload Section -->
+        <form id="upload-form" class="mt-6">
+          <input
+            type="file"
+            id="photo-upload"
+            class="block w-full p-4 rounded mb-4 bg-oyster-pearl-white"
+            accept="image/*"
+          />
+          <textarea
+            id="photo-caption"
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Add a caption..."
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-crab-shell-red text-white py-2 px-4 rounded-full"
+          >
+            Share Your Experience
+          </button>
+        </form>
+      </div>
+
+      <!-- Food Journal Section -->
+      <div class="container mx-auto text-center mt-16">
+        <h3 class="text-4xl font-bold text-chesapeake-blue">
+          Your Personal Food Journal
+        </h3>
+        <p class="mt-4 text-lg">
+          Log your favorite dishes and tasting notes from our food tours.
+        </p>
+
+        <!-- Preloaded Food Journal Entries -->
+        <div
+          id="journal-entries"
+          class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          <div class="journal-entry">
+            <h4 class="text-2xl font-bold">Fried Oyster Sliders</h4>
+            <p>
+              These were crispy on the outside, tender on the inside, with just
+              the right amount of spice!
+            </p>
+          </div>
+          <div class="journal-entry">
+            <h4 class="text-2xl font-bold">Crab Cakes</h4>
+            <p>
+              Classic Maryland crab cakes, packed with crab meat and a hint of
+              Old Bay seasoning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Journal Form -->
+        <form id="journal-form" class="mt-6">
+          <input
+            type="text"
+            id="journal-dish"
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Favorite dish"
+          />
+          <textarea
+            id="journal-notes"
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Tasting notes..."
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-crab-shell-red text-white py-2 px-4 rounded-full"
+          >
+            Save to Journal
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-old-bay-gold">
+      <div class="container mx-auto text-center">
+        <h3 class="text-4xl font-bold text-white">Contact Us</h3>
+        <p class="mt-4 text-lg text-white">
+          Want to know more? Reach out to us for information on our tours!
+        </p>
+        <form class="mt-6">
+          <input
+            type="text"
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Name"
+          />
+          <input
+            type="email"
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Email"
+          />
+          <textarea
+            class="block w-full p-4 rounded mb-4"
+            placeholder="Message"
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-crab-shell-red text-white py-2 px-4 rounded-full"
+          >
+            Send Message
+          </button>
+        </form>
+        <img
+          src="images/contact.jpg"
+          alt="Friendly restaurant atmosphere"
+          class="my-4"
+        />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-eastern-shore-green text-white py-4 text-center">
+      <p>&copy; 2024 Bite Into Maryland Adventures. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Leaflet JavaScript for Interactive Map -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
